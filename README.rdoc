@@ -1,0 +1,8 @@
+==Class Board
+A CourseWorks-like course website
+
+==Homework 1
+Add a basic model file for a user
+/home displays Hello World
+
+Attending Rails + D3 Javascript Library event for the FullStack Meetup
