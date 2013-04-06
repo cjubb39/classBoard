@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  instructions: MyString
+  due_date: 2013-04-06
+  grade: MyString
+  modified: 2013-04-06
+
+two:
+  title: MyString
+  instructions: MyString
+  due_date: 2013-04-06
+  grade: MyString
+  modified: 2013-04-06

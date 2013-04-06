@@ -1,4 +1,19 @@
 ClassBoard::Application.routes.draw do
+  resources :courses
+
+
+  resources :uploads
+
+
+  resources :assignments
+
+
+  resources :lectures
+
+
+  resources :users
+
+
   get "home" => "home#index"
 
   # The priority is based upon order of creation:
