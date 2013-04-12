@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	skip_before_filter :require_user, :only => [:new]
   # GET /users
   # GET /users.json
   def index

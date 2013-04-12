@@ -1,5 +1,7 @@
 ClassBoard::Application.routes.draw do
-  resources :courses
+  root :to => "home#index"
+
+	resources :courses
 
 
   resources :uploads
@@ -13,8 +15,16 @@ ClassBoard::Application.routes.draw do
 
   resources :users
 
+	#Session routes
+	resource :sessions, :only => [:new, :create, :destroy]
 
-  get "home" => "home#index"
+	match "listUsers" => "users#index", :as => "userList"
+	match "signup" => "users#new", :as => "signup"
+	match "login" => "sessions#new", :as => "login"
+	match "logout" => "sessions#destroy", :as => "logout"
+
+
+  #get "home" => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
