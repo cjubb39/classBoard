@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     if current_user
       return true
     end
-    redirect_to root_url
+    redirect_to root_url, :notice => "Must First Login"
   end
 
 end
