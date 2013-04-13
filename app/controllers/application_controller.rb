@@ -3,15 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def current_user
-    if @current_user.nil?
-      @current_user = User.find(session[:user_id]) if session[:user]
-    end
-
-    #if @current_user.nil?
-    #	return false
-    #else
-    #	return true
-    #end
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
   

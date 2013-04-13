@@ -1,8 +1,8 @@
 class Assignment
   include Mongoid::Document
 
-	has_many	:uploads
-
+  has_many  :uploads
+  
 	belongs_to	:course
 
   field :title, type: String
