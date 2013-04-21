@@ -6,7 +6,15 @@ class Course
 	has_many	:lectures
 	has_many	:uploads
 
-  field :title, type: String
-  field :course_code, type: String
-  field :description, type: String
+  validates_uniqueness_of :CallNumber
+
+  field :CallNumber,  type: Integer
+  field :CourseTitle, type: String
+  field :StartTime1,  type: String
+  field :EndTime1,  type: String
+  field :MeetsOn1,  type: String
+  field :Building1, type: String
+  field :Room1,   type: String
+  field :Instructor1Name, type: String
+
 end

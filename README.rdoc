@@ -1,8 +1,8 @@
 ==Class Board
-A CourseWorks-like course website
+A CourseWorks-like course website using MongoDB
 
-==Homework 1
-Add a basic model file for a user
-/home displays Hello World
+Currently has authentication enabled as well as ability to create users, courses, assignments, lectures, and uploads from the website.
 
-Attending Rails + D3 Javascript Library event for the FullStack Meetup
+==Import Capabilities
+rake db:seed imports from ./importFiles/courses.csv and ./importFiles/users.csv.  Both csv headers have header rows which are some subset of possible attributes of the corresponding model.  
+In addition to importing from these files, rake db:seed creates a number of users with randomly generated data.  Finally, it randomly links users and courses

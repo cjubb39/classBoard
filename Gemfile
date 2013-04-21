@@ -17,6 +17,9 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  
+  # To use Foundation
+  gem "zurb-foundation", "~> 4.0.0"
 end
 
 gem 'jquery-rails'
@@ -38,3 +41,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use MongoDB
 gem "mongoid", "~> 3.0.0"
+
+# To use Fabricator
+gem 'fabrication'
+gem "faker"
