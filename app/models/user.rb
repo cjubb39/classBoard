@@ -6,7 +6,9 @@ class User
 
   #attr_accessible :email, :password, :password_confirmation
 
-  validates_uniqueness_of :email
+  #validates_uniqueness_of :email
+  #changed the syntax to include presence as well
+  validates :email, :presence => true, :uniqueness => true
   validates_presence_of :first_name, :last_name
 
 	has_and_belongs_to_many	:courses
