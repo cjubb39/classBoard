@@ -8,6 +8,7 @@ class User
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation
 
   validates_uniqueness_of :email, :message => "please provide valid email not already used"
+  validates_presence_of :email
   validates_presence_of :first_name, :last_name, :message => "please provide name"
 
 	has_and_belongs_to_many	:courses
