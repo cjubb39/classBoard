@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
+<h3><%= link_to "Add Students", addStudents_course_path(@course) %></h3>
+
 <%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Back', myCourses_path %>

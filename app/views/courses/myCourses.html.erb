@@ -1,0 +1,38 @@
+<h1>My Course List</h1>
+
+<table>
+  <tr>
+    <th>Call Number</th>
+    <th>Course Title</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Meets On</th>
+    <th>Building</th>
+    <th>Room</th>
+    <th>Instructor Name</th>
+    <th></th>
+    <% if current_user.role == "admin" %>
+        <th></th>
+        <th></th>
+    <% end %>
+  </tr>
+
+<% @current_user.courses.each do |course| %>
+  <tr>
+    <td><%= course.CallNumber%></td>
+    <td><%= course.CourseTitle %></td>
+    <td><%= course.StartTime1 %></td>
+    <td><%= course.EndTime1 %></td>
+    <td><%= course.MeetsOn1 %></td>
+    <td><%= course.Building1%></td>
+    <td><%= course.Room1%></td>
+    <td><%= course.Instructor1Name%></td>
+    <td><%= link_to 'Show', course %></td>
+
+    <% if current_user.role == "admin" %>
+        <td><%= link_to 'Edit', edit_course_path(course) %></td>
+        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>

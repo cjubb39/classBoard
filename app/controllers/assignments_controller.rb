@@ -1,4 +1,5 @@
 class AssignmentsController < ApplicationController
+  skip_before_filter :admin_check, :only => [:index, :show]
   # GET /assignments
   # GET /assignments.json
   def index

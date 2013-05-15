@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div>
-<h3>Welcome to <%= @course.CourseTitle %>by <%= @course.Instructor1Name %> </h3>
+<h3>Welcome to <%= @course.CourseTitle.titleize %> taught by <%= @course.Instructor1Name.titleize %> </h3>
 </div>
 
 <p>
@@ -44,6 +44,9 @@
   <%= @course.Instructor1Name %>
 </p>
 
+<%if @current_user.role == "admin"%>
+  <%= link_to 'Edit', edit_course_path(@course) %> |
+  <%= link_to 'Add Students', addStudents_course_path(@course) %> |
+<% end %>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Back', myCourses_path %>

@@ -15,23 +15,25 @@
     <th></th>
   </tr>
 
-<% @courses.each do |course| %>
-  <tr>
-    <td><%= course.CallNumber%></td>
-    <td><%= course.CourseTitle %></td>
-    <td><%= course.StartTime1 %></td>
-    <td><%= course.EndTime1 %></td>
-    <td><%= course.MeetsOn1 %></td>
-    <td><%= course.Building1%></td>
-    <td><%= course.Room1%></td>
-    <td><%= course.Instructor1Name%></td>
-    <td><%= link_to 'Show', course %></td>
-    <td><%= link_to 'Edit', edit_course_path(course) %></td>
-    <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% @courses.each do |course| %>
+    <tr>
+      <td><%= course.CallNumber%></td>
+      <td><%= course.CourseTitle %></td>
+      <td><%= course.StartTime1 %></td>
+      <td><%= course.EndTime1 %></td>
+      <td><%= course.MeetsOn1 %></td>
+      <td><%= course.Building1%></td>
+      <td><%= course.Room1%></td>
+      <td><%= course.Instructor1Name%></td>
+      <td><%= link_to 'Show', course %></td>
+      <td><%= link_to 'Edit', edit_course_path(course) %></td>
+      <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Course', new_course_path %>
+<% if current_user.role == "admin" %>
+  <%= link_to 'New Course', new_course_path %>
+<% end %>

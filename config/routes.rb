@@ -1,19 +1,27 @@
-ClassBoard::Application.routes.draw do
+ ClassBoard::Application.routes.draw do
   root :to => "home#index"
 
-	resources :courses
+	resources :courses do
+    member do
+      get 'addStudents'
+    end
+  end
 
 
   resources :uploads
 
-
   resources :assignments
-
 
   resources :lectures
 
 
-  resources :users
+  resources :users do
+    member do
+      get 'addCourse'
+      get 'removeCourse'
+      get 'classmates'
+    end
+  end
 
 	#Session routes
 	resource :sessions, :only => [:new, :create, :destroy]
@@ -22,6 +30,7 @@ ClassBoard::Application.routes.draw do
 	match "signup" => "users#new", :as => "signup"
 	match "login" => "sessions#new", :as => "login"
 	match "logout" => "sessions#destroy", :as => "logout"
+  match "myCourses" => "courses#myCourses", :as => "myCourses"
 
 
   #get "home" => "home#index"

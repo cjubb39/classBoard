@@ -15,12 +15,17 @@ namespace :db do
     Rake::Task['db:populateCoursesDB'].invoke
 
     #Generate primary User
-    User.create!(
+    primaryUser = User.new(
       :first_name => "Chae",
       :last_name => "Jubb",
       :email => "ecj2122@columbia.edu",
       :password => "password"
     )
+    primaryUser.save
+
+    5.times do
+      primaryUser.courses << Course.all.sample
+    end
 
     #Generate secondary users
     users_path = Rails.root.join("importFiles", "users.csv")
@@ -41,7 +46,7 @@ namespace :db do
     #Random associations
     200.times do
       c = Course.all.sample
-      u = Course.all.sample
+      u = User.all.sample
 
       c.users << u unless c.users.include?(u)
     end

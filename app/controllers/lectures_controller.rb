@@ -1,4 +1,5 @@
 class LecturesController < ApplicationController
+  skip_before_filter :admin_check, :only => [:index, :show]
   # GET /lectures
   # GET /lectures.json
   def index

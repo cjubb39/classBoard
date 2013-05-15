@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :require_user
+  before_filter :admin_check
   protect_from_forgery
 
   def current_user
@@ -11,7 +12,20 @@ class ApplicationController < ActionController::Base
     if current_user
       return true
     end
-    redirect_to root_url, :notice => "Must First Login"
+    flash[:notice] = "Must First Log In!"
+    redirect_to root_url
   end
 
+  def admin_check
+    if current_user.role == "admin"
+      return true
+    end
+    flash[:notice] = "Not admin!"
+
+    if request.referrer
+      redirect_to request.referrer
+    else
+      redirect_to myCourses_url
+    end
+  end
 end

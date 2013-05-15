@@ -45,3 +45,6 @@ gem "mongoid", "~> 3.0.0"
 # To use Fabricator
 gem 'fabrication'
 gem "faker"
+
+# "Nicer" URLS
+gem 'mongoid_slug', '~> 2.0.1'

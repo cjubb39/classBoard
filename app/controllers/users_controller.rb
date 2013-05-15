@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-	skip_before_filter :require_user, :only => [:new]
+	skip_before_filter :require_user, :only => [:new, :create]
+  skip_before_filter :admin_check, :except => [:index, :addCourse, :removeCourse]
   # GET /users
   # GET /users.json
   def index
@@ -9,6 +10,23 @@ class UsersController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @users }
     end
+  end
+
+  def classmates
+    userCourses = User.find(session[:user_id]).courses
+    userPeers = User.all
+
+    userPeers = userPeers.clear
+
+    userCourses.each do |course|
+      course.users.each do |user|
+        userPeers.push(user) unless userPeers.include?(user)
+      end
+    end
+
+    @users = userPeers
+
+    @partialIndicator = "classmates"
   end
 
   # GET /users/1
@@ -42,11 +60,13 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @user.role = "student"
 
     respond_to do |format|
       if @user.save
-        #session[:user_id] = user.id
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        session[:user_id] = @user.id
+
+        format.html { redirect_to courses_path, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -81,5 +101,23 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  def addCourse
+    @user = User.find(params[:user])
+    course = Course.find(params[:course])
+
+    @user.courses << course unless course.users.include?(@user)
+
+    redirect_to addStudents_course_path(course)
+  end
+
+  def removeCourse
+    @user = User.find(params[:user])
+    course = Course.find(params[:course])
+
+    @user.courses.delete(course) if course.users.include?(@user)
+
+    redirect_to addStudents_course_path(course)
   end
 end

@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
-  # GET /courses
-  # GET /courses.json
+  skip_before_filter :admin_check, :only => [:index, :myCourses, :show]
+  # GET /coursesedit
   def index
     @courses = Course.all
 
@@ -8,6 +8,25 @@ class CoursesController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @courses }
     end
+  end
+
+  # GET /myCourses
+  # GET /myCourses.json
+  def myCourses
+    @courses = Course.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @courses }
+    end
+  end
+
+  # GET /courses
+  # GET /courses.json
+  def addStudents
+    @course = Course.find(params[:id])
+    @users = User.all.order_by(:last_name.asc)
+    @partialIndicator = "addStudents"
   end
 
   # GET /courses/1
