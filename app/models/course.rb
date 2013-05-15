@@ -10,7 +10,7 @@ class Course
 
   #added validates presence of CallNumber and CourseTitle
   validates_presence_of :CallNumber
-  validates_presense_of :CourseTitle
+  validates_presence_of :CourseTitle
 
   field :CallNumber,  type: Integer
   field :CourseTitle, type: String

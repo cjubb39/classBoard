@@ -1,4 +1,4 @@
-==classBoard
+=classBoard
 A CourseWorks-like course website using MongoDB
 
 Currently has authentication enabled as well as ability to create users, courses, assignments, lectures, and uploads from the website.
@@ -9,3 +9,5 @@ In addition to importing from these files, rake db:seed creates a number of user
 
 ==Extra Features
 classBoard allows users to change passwords from the "My Account" screen, accessible from the drop-down on the far right.  Additionally, the urls for the user "show" page have been prettified. They are now an expansion of the user's email adress rather than the hash from MongoDB.  I chose *not* to implement this change for courses because an instructor may want to keep a course's page hidden from a user not in that course (exam solutions may be posted, etc.).  While classBoard doesn't yet have this feature, keeping the course as a hash allows for easier implementation of that feature.
+
+Additionally, Foundation was used to prettify the side.  This is mainly evident through the header bar.

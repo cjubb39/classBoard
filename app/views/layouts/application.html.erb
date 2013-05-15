@@ -27,6 +27,7 @@
     <% current_user %>
 
     <div class="main_content">
+      
       <% if flash[:notice] -%>
         <p class="notice"><%= flash[:notice] %></p>
       <% end -%>
@@ -35,7 +36,7 @@
       <% end -%>
 
       <%= yield %>
-      
+
       <%= render 'layouts/footer' %>
     </div>
 

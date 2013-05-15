@@ -32,9 +32,6 @@
       <li class="divider"></li>
 <% end %>
 
-      <li class="has-dropdown"><a href="#">Main Item 3</a>
-
-      </li>
       <li class="divider"></li>
     </ul>
 
@@ -58,12 +55,12 @@
       </li>
 <% end %>
       <li><a href="mailto:6i8g9r6?sqs_title=Have+a+Bug?">Technical Problems?</a></li> <!--Emails "bug report" to me-->
-
+      <li class="divider"></li>
       <% if current_user %>
         <li class="has-dropdown">
             <a href="#"><%= current_user.first_name + " " + current_user.last_name %></a> 
           <ul class="dropdown">
-            <li><%= link_to "Account", current_user %> </li>
+            <li><%= link_to "Account", edit_user_path(current_user) %> </li>
             <li><%= link_to "Logout", logout_path, method: "delete" %> </li>
           </ul>
         </li>
@@ -76,6 +73,7 @@
         </li>
       <% end %>
 <% if false%>
+        <!-- Kept as a template -->
         <ul class="dropdown">
           <li><label>Dropdown Level 1 Label</label></li>
           <li class="has-dropdown"><a href="#" class="">Dropdown Level 1a</a>

@@ -11,8 +11,12 @@
     <th>Room</th>
     <th>Instructor Name</th>
     <th></th>
-    <th></th>
-    <th></th>
+    
+    <% if current_user.role == "admin" %>
+      <th></th>
+      <th></th>
+    <% end %>
+
   </tr>
 
   <% @courses.each do |course| %>
@@ -26,14 +30,17 @@
       <td><%= course.Room1%></td>
       <td><%= course.Instructor1Name%></td>
       <td><%= link_to 'Show', course %></td>
-      <td><%= link_to 'Edit', edit_course_path(course) %></td>
-      <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
+      <% if current_user.role == "admin" %>
+        <td><%= link_to 'Edit', edit_course_path(course) %></td>
+        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+      
     </tr>
   <% end %>
 </table>
 
-<br />
-
 <% if current_user.role == "admin" %>
   <%= link_to 'New Course', new_course_path %>
 <% end %>
+<br />
